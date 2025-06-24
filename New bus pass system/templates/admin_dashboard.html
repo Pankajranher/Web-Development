@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Dashboard</title></head>
+<body>
+    <h2>Admin Dashboard</h2>
+    <table border="1">
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Route</th><th>Date</th><th>Status</th><th>Action</th></tr>
+        {% for p in passes %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.email }}</td>
+            <td>{{ p.route }}</td>
+            <td>{{ p.date_applied }}</td>
+            <td>{{ p.status }}</td>
+            <td>
+                <form method="POST">
+                    <input type="hidden" name="pass_id" value="{{ p.id }}">
+                    <select name="status">
+                        <option>Approved</option>
+                        <option>Rejected</option>
+                    </select>
+                    <input type="submit" value="Update">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
